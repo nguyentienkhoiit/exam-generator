@@ -1,0 +1,71 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: exam-generator-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: exam
+      POSTGRES_USER: exam
+      POSTGRES_PASSWORD: exam
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data/pgdata
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U exam -d exam" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - exam-generator-net
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    container_name: exam-generator-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
+      # CORS for Elasticvue
+      http.cors.enabled: "true"
+      http.cors.allow-origin: "http://localhost:8088"
+      http.cors.allow-headers: "X-Requested-With,Content-Type,Content-Length,Authorization"
+      http.cors.allow-methods: "OPTIONS,HEAD,GET,POST,PUT,DELETE"
+
+      # DEV: watermarks by absolute free space (works reliably on Docker Desktop)
+      cluster.routing.allocation.disk.threshold_enabled: "true"
+      cluster.routing.allocation.disk.watermark.low: "5gb"
+      cluster.routing.allocation.disk.watermark.high: "3gb"
+      cluster.routing.allocation.disk.watermark.flood_stage: "2gb"
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fsS http://localhost:9200 >/dev/null || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    networks:
+      - exam-generator-net
+
+  elasticvue:
+    image: cars10/elasticvue:latest
+    container_name: exam-generator-elasticvue
+    restart: unless-stopped
+    ports:
+      - "8088:8080"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    networks:
+      - exam-generator-net
+
+networks:
+  exam-generator-net:
+    name: exam-generator-net
+    driver: bridge
