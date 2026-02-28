@@ -1,0 +1,4 @@
+taskId,pdfClasspath,fileId,numChunks,avgChars,approxRedundancyRatio
+t01_unit1_present_simple,bench/pdfs/unit1_present_simple_long.pdf,b0f70fd6-739c-46c3-9490-366e3fbd7387,10,17397.00,0.1333
+t02_unit2_past_simple,bench/pdfs/unit2_past_simple_long.pdf,1f94606a-ce5b-40a6-8db4-3f446186b74c,13,16891.77,0.1333
+t03_modals_conditionals,bench/pdfs/unit3_modals_conditionals_long.pdf,5a955db5-3ddb-4b13-8551-23be3fea37fe,20,15771.10,0.1333

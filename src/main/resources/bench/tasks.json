@@ -1,0 +1,32 @@
+[
+  {
+    "id": "t01_unit1_present_simple",
+    "pdfClasspath": "bench/pdfs/unit1_present_simple_long.pdf",
+    "prompt": {
+      "topic": "Present Simple - Daily routines",
+      "numQuestions": 10,
+      "difficulty": "medium",
+      "constraints": { "mcq": 6, "trueFalse": 2, "shortAnswer": 2 }
+    }
+  },
+  {
+    "id": "t02_unit2_past_simple",
+    "pdfClasspath": "bench/pdfs/unit2_past_simple_long.pdf",
+    "prompt": {
+      "topic": "Past Simple - Storytelling",
+      "numQuestions": 10,
+      "difficulty": "medium",
+      "constraints": { "mcq": 6, "trueFalse": 2, "shortAnswer": 2 }
+    }
+  },
+  {
+    "id": "t03_modals_conditionals",
+    "pdfClasspath": "bench/pdfs/unit3_modals_conditionals_long.pdf",
+    "prompt": {
+      "topic": "Modals and Conditionals",
+      "numQuestions": 10,
+      "difficulty": "hard",
+      "constraints": { "mcq": 6, "trueFalse": 2, "shortAnswer": 2 }
+    }
+  }
+]

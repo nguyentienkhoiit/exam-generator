@@ -1,0 +1,14 @@
+spring:
+  main:
+    banner-mode: "off"
+
+experiments:
+  outDir: "./exp-out"
+  runExp1: true
+  runExp2: true
+  runExp3: true   # vì bạn nói đã fix LLM
+
+exam:
+  ingest:
+    cache:
+      enabled: true
