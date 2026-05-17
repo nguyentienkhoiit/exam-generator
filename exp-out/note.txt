@@ -1,0 +1,25 @@
+EXP1 → Chunking Quality
+EXP2 → Retrieval Quality
+EXP3 → Generation Quality
+
+
+Chấm mỗi tiêu chí theo thang 1–5:
+
+correctness
+1 = sai kiến thức
+3 = cơ bản đúng nhưng còn lỗi nhỏ
+5 = đúng hoàn toàn
+clarity
+1 = câu hỏi khó hiểu
+3 = tạm hiểu được
+5 = rõ ràng, tự nhiên
+difficultyMatch
+1 = lệch hẳn mức độ yêu cầu
+3 = gần đúng
+5 = khớp tốt với level mong muốn
+explanationQuality
+1 = giải thích vô dụng / sai
+3 = giải thích được nhưng ngắn hoặc chưa thuyết phục
+5 = giải thích rõ, hỗ trợ học tốt
+overallScore
+= trung bình của 4 cột trên

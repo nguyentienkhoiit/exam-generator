@@ -1,7 +1,7 @@
 server:
   port: ${SERVER_PORT:8080}
   tomcat:
-    max-swallow-size: -1   # cho phép swallow request lớn (Tomcat)
+    max-swallow-size: -1
 
 spring:
   autoconfigure:
@@ -39,9 +39,8 @@ spring:
       embedding:
         model: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text}
 
-    # Chat model (OpenAI-compatible). You can point base-url to DeepSeek, OpenAI, etc.
     openai:
-      api-key: ${DEEPSEEK_API_KEY:sk-85ba0822938c47e19742798e570400b5}
+      api-key: ${DEEPSEEK_API_KEY:sk-b3447cc3c4404a09a36c3b252f5e054a}
       base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com}
       connect-timeout: ${OPENAI_CONNECT_TIMEOUT:30s}
       read-timeout: ${OPENAI_READ_TIMEOUT:300s}
@@ -64,7 +63,6 @@ exam:
     socket-timeout-ms: ${ELASTIC_SOCKET_TIMEOUT_MS:3000}
 
   pgvector:
-    # kept for backward compatibility (not required by the simplified VectorStore bean)
     dimensions: ${PGVECTOR_DIMENSIONS:768}
 
   ingest:
@@ -73,19 +71,17 @@ exam:
 
   rag:
     chunk:
-      tokens: ${RAG_CHUNK_TOKENS:600}
-      overlap: ${RAG_CHUNK_OVERLAP:80}
-      min-chars: ${RAG_CHUNK_MIN_CHARS:300}
+      tokens: ${RAG_CHUNK_TOKENS:300}
+      overlap: ${RAG_CHUNK_OVERLAP:40}
+      min-chars: ${RAG_CHUNK_MIN_CHARS:180}
 
     retrieve:
       topK: ${RAG_TOPK:12}
-      alpha: ${RAG_ALPHA:0.6}     # 0..1 (vector weight); bm25 weight = 1-alpha
+      alpha: ${RAG_ALPHA:0.6}
       mmr:
-        lambda: ${RAG_MMR_LAMBDA:0.7}  # 0..1 (relevance vs diversity)
+        lambda: ${RAG_MMR_LAMBDA:0.7}
         k: ${RAG_MMR_K:8}
 
     context:
       max-chars: ${RAG_CONTEXT_MAX_CHARS:6500}
       max-chunks: ${RAG_CONTEXT_MAX_CHUNKS:8}
-
-  # legacy deepseek.* properties removed (now configured under spring.ai.openai.*)

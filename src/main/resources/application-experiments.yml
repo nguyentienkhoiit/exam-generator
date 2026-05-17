@@ -1,14 +1,10 @@
-spring:
-  main:
-    banner-mode: "off"
-
 experiments:
   outDir: "./exp-out"
   runExp1: true
   runExp2: true
-  runExp3: true   # vì bạn nói đã fix LLM
-
-exam:
-  ingest:
-    cache:
-      enabled: true
+  runExp3: true
+  topK: 12
+  alpha: 0.5   # 🔥 FIX
+  mmrK: 8
+  mmrLambda: 0.7
+  genRuns: 6

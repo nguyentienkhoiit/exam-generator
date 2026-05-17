@@ -1,0 +1,11 @@
+taskId,runIdx,questionIdx,correctness,clarity,difficultyMatch,explanationQuality,overallScore
+t01_unit1_present_simple,1,1,5,5,4,4,4.50
+t01_unit1_present_simple,1,2,4,5,4,4,4.25
+t01_unit1_present_simple,1,3,5,4,5,4,4.50
+t01_unit1_present_simple,1,4,4,4,4,3,3.75
+t01_unit1_present_simple,1,5,5,5,5,4,4.75
+t01_unit1_present_simple,1,6,4,4,4,4,4.00
+t01_unit1_present_simple,1,7,5,5,4,4,4.50
+t01_unit1_present_simple,1,8,4,4,3,3,3.50
+t01_unit1_present_simple,1,9,5,4,4,4,4.25
+t01_unit1_present_simple,1,10,4,5,4,4,4.25
