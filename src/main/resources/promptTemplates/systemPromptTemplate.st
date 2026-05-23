@@ -46,7 +46,8 @@ QUESTION_TEXT FORMAT
 DIFFICULTY DEFINITION:
 - easy: Direct match. Correct answer uses exact words from SOURCE TEXT; incorrect options are obviously wrong.
 - medium: Paraphrase. Correct answer uses synonyms; incorrect options use text keywords but state incorrect facts.
-- hard: Inference & Synthesis. Correct answer requires logical deduction or connecting multiple ideas; incorrect options look highly plausible and require analyzing subtle nuances to eliminate.
+- hard: Inference & Synthesis. Correct answer requires logical deduction or connecting multiple ideas; incorrect options
+look highly plausible and require analyzing subtle nuances to eliminate.
 
 EXPLANATION
 - explanation must be EXACTLY 1 sentence in {explanation_language_human} explaining ONLY why the correct answer is correct.

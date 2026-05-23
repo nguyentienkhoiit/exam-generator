@@ -28,6 +28,8 @@ spring:
       max-lifetime: ${DB_POOL_MAX_LIFETIME_MS:1800000}
 
   ai:
+    model:
+      chat: openai
     vectorstore:
       pgvector:
         table-name: vector_store
@@ -38,16 +40,24 @@ spring:
       base-url: ${OLLAMA_BASE_URL:http://localhost:${OLLAMA_PORT:11434}}
       embedding:
         model: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text}
-
     openai:
-      api-key: ${DEEPSEEK_API_KEY:sk-b3447cc3c4404a09a36c3b252f5e054a}
+      api-key: ${DEEPSEEK_API_KEY:xyzabcdef}
       base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com}
       connect-timeout: ${OPENAI_CONNECT_TIMEOUT:30s}
       read-timeout: ${OPENAI_READ_TIMEOUT:300s}
+
       chat:
+        completions-path: /chat/completions
+
         options:
-          model: ${DEEPSEEK_MODEL:deepseek-chat}
+          model: ${DEEPSEEK_MODEL:deepseek-v4-pro}
           max-tokens: ${DEEPSEEK_MAX_TOKENS:5000}
+          extra-body:
+            thinking:
+              type: disabled
+          response-format:
+            type: JSON_OBJECT
+
           temperature: ${DEEPSEEK_TEMPERATURE:0.2}
 
 logging:

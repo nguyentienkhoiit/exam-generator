@@ -116,10 +116,10 @@ public class ExamDraftPromptService {
 
         // AgentGenerativeService.generate(String prompt) uses only .user(prompt),
         // so we embed system+user into a single prompt string.
-        String fullPrompt = "SYSTEM:\n" + pb.system() + "\n\nUSER:\n" + pb.user();
+//        String fullPrompt = "SYSTEM:\n" + pb.system() + "\n\nUSER:\n" + pb.user();
 
         long t0 = System.nanoTime();
-        ExamDraftResponse out = agentGenerativeService.generate(fullPrompt);
+        ExamDraftResponse out = agentGenerativeService.generate(pb.system, pb.user);
         long ms = (System.nanoTime() - t0) / 1_000_000;
 
         int qCount = (out == null || out.getQuestions() == null) ? 0 : out.getQuestions().size();

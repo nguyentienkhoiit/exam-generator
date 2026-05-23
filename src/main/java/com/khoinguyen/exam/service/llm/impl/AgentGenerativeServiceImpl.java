@@ -19,11 +19,21 @@ public class AgentGenerativeServiceImpl implements AgentGenerativeService {
         this.chatClient = ChatClient.builder(chatModel).build();
     }
 
+//    @Override
+//    public ExamDraftResponse generate(String prompt) {
+//        return chatClient
+//                .prompt()
+//                .user(prompt)
+//                .call()
+//                .entity(ExamDraftResponse.class);
+//    }
+
     @Override
-    public ExamDraftResponse generate(String prompt) {
+    public ExamDraftResponse generate(String system, String user) {
         return chatClient
                 .prompt()
-                .user(prompt)
+                .system(system)
+                .user(user)
                 .call()
                 .entity(ExamDraftResponse.class);
     }
